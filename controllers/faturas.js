@@ -6,24 +6,20 @@ const faturaModel = mongoose.model('Fatura', faturas);
 
 module.exports = function (app) {
 
-   
-    
     const listar = (req, res) => {
         // eslint-disable-next-line no-console
         //console.log('Listar');
         const query = {};
-        faturaModel.find(query, function (err, faturas) {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.json(faturas);
-        });
+        litarFatura(query, res);
     };
 
     const consultar = (req, res) => {
         // eslint-disable-next-line no-console
-        console.log('consultar');
-        const query = { idFatura: req.params.idFatura };
+        const query = { _id: req.params.idFatura };
+        console.log(query)
 
         faturaModel.findOne(query, function (err, fatura) {
+            //res.header("Access-Control-Allow-Origin", "*");
             res.json(fatura);
         });
     };
@@ -93,3 +89,10 @@ module.exports = function (app) {
     app.delete('/faturas/:id', remover);
 
 };
+function litarFatura(query, res) {
+    faturaModel.find(query, function (err, faturas) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.json(faturas);
+    });
+}
+
