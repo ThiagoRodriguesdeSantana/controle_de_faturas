@@ -5,7 +5,7 @@ const _schema = {
     idUsuario: {type: String },
     nomeDaEmpresa: { type: String, require: 'Nome da empresa é obrigatorio!' },
     valor: {type: Number },
-    dataDeVencimento: { type: Date, default: Date.now },
+    dataDeVencimento: { type: String, default: Date.now.toString() },
     pagou: {type: Boolean }
 };
 

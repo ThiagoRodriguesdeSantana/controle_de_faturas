@@ -16,6 +16,7 @@ module.exports = function (app) {
     const consultar = (req, res) => {
         // eslint-disable-next-line no-console
         const query = { _id: req.params.idFatura };
+        // eslint-disable-next-line no-console
         console.log(query)
 
         faturaModel.findOne(query, function (err, fatura) {
@@ -55,6 +56,7 @@ module.exports = function (app) {
         console.log('Editar');
         const fatura = req.body;
 
+        // eslint-disable-next-line no-unused-vars
         faturaModel.findByIdAndUpdate(fatura._id, fatura, { upsert: true }, function (err, doc) {
             if (err) return res.send(500, { error: err });
             return res.send("Salvo com sucesso!");
